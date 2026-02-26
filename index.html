@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Element451 Comparison</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,600;0,700;1,600&family=PT+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --orange: #FE5000;
+    --dark: #25383F;
+    --dark-80: #465157;
+    --dark-60: #686E74;
+    --dark-40: #909398;
+    --dark-20: #BFC0C3;
+    --border: #dfe2e3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'PT Sans', sans-serif;
+    background: #eef0f0;
+    padding: 24px 16px;
+    color: var(--dark);
+  }
+
+  .page {
+    width: 750px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 2px 20px rgba(37,56,63,0.12);
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--dark);
+    padding: 18px 28px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header-left {}
+  .logo-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 5px;
+  }
+  .logo-icon {
+    width: 26px; height: 26px;
+    background: var(--orange);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark-40);
+  }
+  .logo-text span { color: white; }
+  .header h1 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.25;
+  }
+  .header h1 em { font-style: italic; color: var(--orange); }
+  .header-sub {
+    font-size: 11px;
+    color: var(--dark-40);
+    margin-top: 2px;
+  }
+  .col-labels {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .col-pill {
+    text-align: center;
+    padding: 7px 14px;
+    border-radius: 3px;
+    width: 165px;
+  }
+  .col-pill.full { background: var(--orange); }
+  .col-pill.integration { background: var(--dark-80); }
+  .col-pill .badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2px;
+  }
+  .col-pill h3 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+  .col-pill p {
+    font-size: 10px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 1px;
+  }
+
+  /* TABLE */
+  .table { width: 100%; border-collapse: collapse; }
+
+  .cat-row td {
+    background: #f2f4f4;
+    padding: 5px 10px 5px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--orange);
+    border-top: 2px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .data-row td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #eef0f0;
+    vertical-align: top;
+    font-size: 11.5px;
+    line-height: 1.4;
+  }
+  .data-row:hover td { background: #fafbfb; }
+
+  td.feat {
+    width: 175px;
+    font-weight: 700;
+    font-size: 11px;
+    color: var(--dark);
+    padding-left: 12px;
+    border-right: 1px solid var(--border);
+  }
+  td.full-cell { background: #fffaf8; border-right: 1px solid var(--border); width: 270px; }
+  td.int-cell { background: white; width: 270px; }
+
+  .highlight-row td.feat { border-left: 3px solid var(--orange); padding-left: 9px; }
+
+  .cell-inner { display: flex; gap: 6px; align-items: flex-start; }
+  .dot { flex-shrink: 0; font-size: 11px; margin-top: 1px; }
+  .dot.full { color: var(--orange); }
+  .dot.partial { color: var(--dark-40); }
+  .cell-text { color: var(--dark-60); font-size: 11px; line-height: 1.4; }
+  .cell-text strong { color: var(--dark); font-weight: 700; }
+
+  /* FOOTER */
+  .footer { display: flex; border-top: 2px solid var(--border); }
+  .footer-col { flex: 1; padding: 14px 18px; }
+  .footer-col.left { background: var(--dark); border-right: 1px solid var(--dark-80); }
+  .footer-col.right { background: #f2f4f4; }
+
+  .footer-col h4 {
+    font-family: 'Zilla Slab', serif;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .footer-col.left h4 { color: white; }
+  .footer-col.right h4 { color: var(--dark); }
+  .footer-col h4::before {
+    content: '';
+    display: inline-block;
+    width: 3px; height: 14px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .footer-col.left h4::before { background: var(--orange); }
+  .footer-col.right h4::before { background: var(--dark-40); }
+
+  .footer-list { list-style: none; }
+  .footer-list li {
+    font-size: 11px;
+    padding: 3px 0;
+    display: flex;
+    gap: 7px;
+    line-height: 1.35;
+  }
+  .footer-col.left .footer-list li { color: var(--dark-40); }
+  .footer-col.right .footer-list li { color: var(--dark-60); }
+  .arr { color: var(--orange); font-weight: 700; flex-shrink: 0; }
+  .arr-gray { color: var(--dark-40); font-weight: 700; flex-shrink: 0; }
+
+  /* CTA */
+  .cta {
+    background: var(--orange);
+    padding: 11px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cta-text { color: rgba(255,255,255,0.85); font-size: 11px; }
+  .cta-text strong { color: white; font-family: 'Zilla Slab', serif; font-size: 13px; display: block; }
+  .cta-link {
+    background: white;
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 18px;
+    border-radius: 3px;
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 18px;
+    padding: 6px 12px;
+    background: #f2f4f4;
+    border-top: 1px solid var(--border);
+  }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--dark-60); }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo-row">
+        <div class="logo-icon">E</div>
+        <div class="logo-text"><span>element</span>451</div>
+      </div>
+      <h1>Two Ways to Use Element451.<br><em>One Platform Built for Higher Ed.</em></h1>
+      <p class="header-sub">Element451 as your full CRM vs. layered alongside Slate or Salesforce.</p>
+    </div>
+    <div class="col-labels">
+      <div class="col-pill full">
+        <div class="badge">Option A</div>
+        <h3>Element451 as Full CRM</h3>
+        <p>Replace existing CRM</p>
+      </div>
+      <div class="col-pill integration">
+        <div class="badge">Option B</div>
+        <h3>Element451 + Existing CRM</h3>
+        <p>Layer on Slate / Salesforce</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <table class="table">
+
+    <!-- AI -->
+    <tr class="cat-row"><td colspan="3">🤖 AI & Automation</td></tr>
+
+    <tr class="data-row highlight-row">
+      <td class="feat">Bolt AI Agents for Students</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Full deployment.</strong> All Bolt Agents run on complete, unified student data for deepest personalization.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Full deployment.</strong> Bolt Agents run via native CRM sync — no replacement required.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Workflow Automations</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully native.</strong> Triggers fire in real time off any data point across the full platform.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Sync-dependent.</strong> Automations trigger based on data synced from Slate/Salesforce — near-real-time for most use cases.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Bolt Copilot & Knowledge Hub</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Full access.</strong> Works across all platform data with complete student record context.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully available.</strong> Context scoped to fields synced from your CRM.</div></div></td>
+    </tr>
+
+    <!-- ENGAGEMENT -->
+    <tr class="cat-row"><td colspan="3">💬 Engagement & Communication</td></tr>
+
+    <tr class="data-row">
+      <td class="feat">24/7 Omni-Channel Outreach (Email, SMS, Chat, Voice)</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully native.</strong> All channels managed in one system with a unified student record.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully available.</strong> Element451 owns all student-facing communication; your CRM handles data storage.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Personalization & Dynamic Content</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Deepest personalization.</strong> Any field in the unified record available for dynamic content.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Good personalization.</strong> Scoped to fields actively synced from your CRM.</div></div></td>
+    </tr>
+
+    <!-- ADMISSIONS -->
+    <tr class="cat-row"><td colspan="3">🎓 Admissions & Applications</td></tr>
+
+    <tr class="data-row">
+      <td class="feat">Applications + Decisions</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully native.</strong> Applications built, reviewed, and decided inside Element451.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Your CRM owns applications.</strong> Element451 manages engagement around apps — nudges, follow-ups, status updates.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Events, Appointments & StudentHub Portal</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully native.</strong> All connected to the student record with real-time automation triggers.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully available.</strong> Can run alongside or replace equivalent tools in your existing CRM.</div></div></td>
+    </tr>
+
+    <!-- MARKETING -->
+    <tr class="cat-row"><td colspan="3">📣 Marketing</td></tr>
+
+    <tr class="data-row">
+      <td class="feat">Campaigns, Journeys & Landing Pages</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully native.</strong> AI-assisted content creation, drag-and-drop builder, triggers off any platform event.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully available.</strong> A primary reason institutions add Element451 to Slate — stronger marketing automation out of the box.</div></div></td>
+    </tr>
+
+    <!-- DATA -->
+    <tr class="cat-row"><td colspan="3">📊 Data, Reporting & Governance</td></tr>
+
+    <tr class="data-row highlight-row">
+      <td class="feat">Unified Student Record (CRM + CDP)</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Single source of truth.</strong> Every interaction, application, and conversation in one record — no reconciliation needed.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Split record.</strong> Field mapping and sync cadence determine completeness of the Element451 record.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Bolt Insights & Analytics</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Full depth.</strong> Engagement, funnel, retention, and campaign performance — all in one view.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Scoped to Element451 data.</strong> Application funnel reporting requires your existing CRM separately.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">Security & Compliance (SOC 2, FERPA)</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully certified.</strong> SOC 2 Type II, FERPA-aligned, encrypted at rest and in transit, zero data-reuse policy.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Fully certified.</strong> Same security standards apply regardless of CRM configuration.</div></div></td>
+    </tr>
+
+    <!-- IMPLEMENTATION -->
+    <tr class="cat-row"><td colspan="3">🚀 Implementation & Operations</td></tr>
+
+    <tr class="data-row">
+      <td class="feat">Time to Live</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>10–12 weeks.</strong> In-house implementation by Element451. First results often visible in 2–3 weeks.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>Faster start.</strong> No CRM migration needed — integration setup and agent deployment move quicker.</div></div></td>
+    </tr>
+    <tr class="data-row">
+      <td class="feat">System Management & Cost</td>
+      <td class="full-cell"><div class="cell-inner"><span class="dot full">●</span><div class="cell-text"><strong>One vendor, one team.</strong> Replaces existing CRM costs — often reduces total spend by eliminating point solutions.</div></div></td>
+      <td class="int-cell"><div class="cell-inner"><span class="dot partial">◐</span><div class="cell-text"><strong>Two systems to maintain.</strong> Additive investment justified by engagement ROI and staff time savings.</div></div></td>
+    </tr>
+
+  </table>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><span style="color:var(--orange);font-weight:700">●</span> Fully available / best-in-class</div>
+    <div class="legend-item"><span style="color:var(--dark-40);font-weight:700">◐</span> Available with some scope or dependency</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-col left">
+      <h4>Best Fit: Element451 as Full CRM</h4>
+      <ul class="footer-list">
+        <li><span class="arr">→</span> On an aging or difficult-to-use CRM</li>
+        <li><span class="arr">→</span> Want one platform for the full student lifecycle</li>
+        <li><span class="arr">→</span> Limited IT bandwidth for multi-system management</li>
+        <li><span class="arr">→</span> Looking to consolidate tools and reduce vendor complexity</li>
+      </ul>
+    </div>
+    <div class="footer-col right">
+      <h4>Best Fit: Element451 + Existing CRM</h4>
+      <ul class="footer-list">
+        <li><span class="arr-gray">→</span> Invested in Slate/Salesforce with no near-term migration plans</li>
+        <li><span class="arr-gray">→</span> State system mandate requires a specific CRM as system of record</li>
+        <li><span class="arr-gray">→</span> Need AI engagement your current CRM can't deliver</li>
+        <li><span class="arr-gray">→</span> Want a lower-risk entry point to prove ROI before broader adoption</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <div class="cta-text">
+      <strong>Ready to see it in action?</strong>
+      Either path starts with a conversation. We'll help you find the right fit.
+    </div>
+    <a href="https://element451.com/demo" class="cta-link">Book a Demo →</a>
+  </div>
+
+</div>
+</body>
+</html>
